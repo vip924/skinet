@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace API.Dtos
 {
-    public class ProductToReturnDto //Data transfer object
+    public class ProductToReturnDto // *** Data transfer object. ***
     {
         public int Id { get; set; }
         public string Name { get; set; }

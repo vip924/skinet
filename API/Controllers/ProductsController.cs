@@ -14,7 +14,7 @@ namespace API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ProductsController : ControllerBase
+    public class ProductsController : BaseApiController
     {
         // private readonly IProductRepository _repo;
         // public ProductsController(IProductRepository repo)
@@ -42,6 +42,7 @@ namespace API.Controllers
         public async Task<ActionResult<IReadOnlyList<ProductToReturnDto>>> GetProducts()
         {
             var spec = new ProductsWithTypesAndBrandsSpecification();
+            // ###The asynchronous query call to the SQL DB to get the data. (async, await and task are keywords used)###
             var products = await _productRepo.ListAsync(spec);
             //Old DTO code.
             // return (products.Select(product =>new ProductToReturnDto

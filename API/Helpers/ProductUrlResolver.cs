@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace API.Helpers
 {
+    // *** The class is using a AutoMapper Interface ***
     public class ProductUrlResolver : IValueResolver<Product, ProductToReturnDto, string>
     {
         private readonly IConfiguration _config;
