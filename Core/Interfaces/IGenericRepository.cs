@@ -7,6 +7,7 @@ using Core.Specifications;
 
 namespace Core.Interfaces
 {
+    // *** <T> represents the type. This interface is a Generic one which can take any custom type. ***
     public interface IGenericRepository<T> where T : BaseEntity
     {
         Task<T> GetByIdAsync(int id);

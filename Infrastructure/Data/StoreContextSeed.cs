@@ -15,6 +15,7 @@ namespace Infrastructure.Data
         {
             try
             {
+                // *** Used to load the data from the json files to the table. ***
                 if (!context.ProductBrands.Any())
                 {
                     var brandsData = File.ReadAllText("../Infrastructure/Data/SeedData/brands.json");
