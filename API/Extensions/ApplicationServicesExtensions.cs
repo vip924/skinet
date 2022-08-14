@@ -12,6 +12,7 @@ namespace API.Extensions
 {
     public static class ApplicationServicesExtensions
     {
+        // *** Adding the services from the startup class as a seperate class. ***
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             // *** Adding the Interface Repository to the Service. ***

@@ -10,6 +10,7 @@ using Core.Specifications;
 using API.Dtos;
 using AutoMapper;
 using API.Errors;
+using API.Helpers;
 
 namespace API.Controllers
 {
@@ -40,12 +41,16 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<ProductToReturnDto>>> GetProducts()
+        public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProducts(
+            [FromQuery] ProductSpecParams productParams) // *** FromQuery is used to notify the controller that params are in the query string. *** 
         {
-            var spec = new ProductsWithTypesAndBrandsSpecification();
-            // ###The asynchronous query call to the SQL DB to get the data. (async, await and task are keywords used)###
+            var spec = new ProductsWithTypesAndBrandsSpecification(productParams);
+
+            var countSpec = new ProductWithFiltersForCountSpecification(productParams);
+            var totalItems = await _productRepo.CountAsync(countSpec);
+            // *** The asynchronous query call to the SQL DB to get the data. (async, await and task are keywords used) ***
             var products = await _productRepo.ListAsync(spec);
-            //Old DTO code.
+            // *** Old DTO code. ***
             // return (products.Select(product =>new ProductToReturnDto
             // {
             //     Id = product.Id,
@@ -56,7 +61,8 @@ namespace API.Controllers
             //     ProductBrand = product.ProductBrand.Name,
             //     ProductType = product.ProductType.Name
             // })).ToList();
-            return Ok(_mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductToReturnDto>>(products));
+            var data = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductToReturnDto>>(products);
+            return Ok(new Pagination<ProductToReturnDto>(productParams.PageIndex, productParams.PageSize, totalItems, data));
         }
 
         [HttpGet("{id}")]

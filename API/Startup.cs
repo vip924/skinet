@@ -29,6 +29,13 @@ namespace API
                 x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
             services.AddApplicationServices(); // *** Defining the services in another class as an extension to avoid the clutter. ***
             services.AddSwaggerDocumentation();
+            services.AddCors(opt=> // *** This service is to configure the client app cross origin ***
+            {
+                opt.AddPolicy("CorsPolicy", policy=>
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+                });
+            });
         }
 
         // *** This method gets called by the runtime. Use this method to configure the HTTP request pipeline (Middleware configuration: order should be correct). ***
@@ -49,6 +56,8 @@ namespace API
             app.UseRouting();
 
             app.UseStaticFiles(); // *** Middleware for adding images and staic files. ***
+
+            app.UseCors("CorsPolicy"); // *** This Middleware is to configure the client app cross origin ***
 
             app.UseAuthorization();
 
