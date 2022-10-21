@@ -57,7 +57,7 @@ namespace API
 
             app.UseStaticFiles(); // *** Middleware for adding images and staic files. ***
 
-            app.UseCors("CorsPolicy"); // *** This Middleware is to configure the client app cross origin ***
+            app.UseCors("CorsPolicy"); // *** This Middleware is to configure the client app cross origin. ***
 
             app.UseAuthorization();
 

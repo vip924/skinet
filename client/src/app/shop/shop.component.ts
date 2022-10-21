@@ -12,7 +12,7 @@ import { ShopService } from './shop.service';
 })
 export class ShopComponent implements OnInit {
 
-  @ViewChild('search', { static: false }) searchTerm: ElementRef;
+  @ViewChild('search', { static: false }) searchTerm: ElementRef; // *** Used to get the DOM element value entered in HTML page. ***
   products: IProduct[];
   brands: IBrand[];
   types: IType[];

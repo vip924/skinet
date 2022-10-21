@@ -10,7 +10,7 @@ namespace API.Extensions
 {
     public static class SwaggerServiceExtensions
     {
-        // *** Adding the services from the startup class as a seperate class. ***
+        // *** Adding the services and middleware from the startup class as a seperate class. ***
         public static IServiceCollection AddSwaggerDocumentation(this IServiceCollection services)
         {
             services.AddSwaggerGen(c =>

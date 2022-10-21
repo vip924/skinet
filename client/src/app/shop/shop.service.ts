@@ -5,6 +5,7 @@ import { IBrand } from '../shared/models/brands';
 import { IType } from '../shared/models/productType';
 import { map } from 'rxjs/operators';
 import { ShopParams } from '../shared/models/shopParams';
+import { IProduct } from '../shared/models/product';
 
 // *** Services are used for connecting the HTTP calls with the component. ***
 // *** Services will be availble at all time of the app from start to end. ***
@@ -26,8 +27,8 @@ export class ShopService {
       params = params.append('brandId', shopParams.brandId.toString());
     if (shopParams.typeId !== 0)
       params = params.append('typeId', shopParams.typeId.toString());
-    if(shopParams.search)
-      params=params.append('search', shopParams.search);
+    if (shopParams.search)
+      params = params.append('search', shopParams.search);
 
     params = params.append('sort', shopParams.sort);
     params = params.append('pageIndex', shopParams.pageNumber.toString());
@@ -39,6 +40,10 @@ export class ShopService {
           return response.body;
         })
       )
+  }
+
+  getProduct(id: number) {
+    return this.http.get<IProduct>(this.baseUrl + 'products/' + id)
   }
 
   getBrands() {

@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { ShopModule } from './shop/shop.module';
+import { HomeComponent } from './home/home.component';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [ // *** This has the list of components. ***
@@ -18,7 +20,7 @@ import { ShopModule } from './shop/shop.module';
     BrowserAnimationsModule,
     HttpClientModule,
     CoreModule, // *** Imports the Core and Shop module which inturn exports the NavBarComponent & ShopComponent. ***
-    ShopModule
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
