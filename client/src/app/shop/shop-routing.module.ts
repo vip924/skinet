@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '', component: ShopComponent
   },
   {
-    path: ':id', component: ProductDetailsComponent
+    path: ':id', component: ProductDetailsComponent, data: { breadcrumb: { alias: 'productDetails' } } // *** Used to set the product name as the bredcrumb. ***
   },
 ]
 
@@ -18,7 +18,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes) // *** Will only be available for the child module Shop. ***
   ],
-  exports:[
+  exports: [
     RouterModule
   ]
 })

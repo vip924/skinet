@@ -10,6 +10,8 @@ import { ShopModule } from './shop/shop.module';
 import { HomeComponent } from './home/home.component';
 import { HomeModule } from './home/home.module';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './core/interceptors/loading.interceptors';
 
 @NgModule({
   declarations: [ // *** This has the list of components. ***
@@ -21,10 +23,12 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     BrowserAnimationsModule,
     HttpClientModule,
     CoreModule, // *** Imports the Core and Shop module which inturn exports the NavBarComponent & ShopComponent. ***
-    HomeModule
+    HomeModule,
+    NgxSpinnerModule // *** Imports the loader module. ***
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true } // *** Multiple HTTP Interceptors. ***
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }, // *** Multiple HTTP Interceptors. ***
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

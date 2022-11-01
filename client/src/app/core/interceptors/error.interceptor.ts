@@ -3,10 +3,10 @@ import { Injectable } from "@angular/core";
 import { NavigationExtras, Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr"; // *** Used Toast ver 12 for Ng ver 12. ***
 import { Observable, throwError } from "rxjs";
-import { catchError } from "rxjs/operators";
+import { catchError, delay } from "rxjs/operators";
 
 @Injectable()
-export class ErrorInterceptor implements HttpInterceptor {
+export class ErrorInterceptor implements HttpInterceptor { // *** Interceptor used to catch the HTTP errors. ***
 
     constructor(private router: Router, private toastr: ToastrService) { }
 
