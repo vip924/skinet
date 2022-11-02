@@ -17,6 +17,7 @@ namespace API.Extensions
         {
             // *** Adding the Interface Repository to the Service. ***
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IBasketRepository, BasketRepository>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             // *** To make the Bad Request error response more readable. ***
