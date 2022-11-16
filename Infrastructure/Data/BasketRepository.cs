@@ -12,7 +12,7 @@ namespace Infrastructure.Data
         private readonly IDatabase _database;
         public BasketRepository(IConnectionMultiplexer redis)
         {
-            _database = redis.GetDatabase();
+            _database = redis.GetDatabase(); // *** Basket functionality is implemented using the Redis library. ***
         }
 
         public async Task<bool> DeleteBasketAsync(string basketId)

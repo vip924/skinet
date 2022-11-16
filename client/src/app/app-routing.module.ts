@@ -23,6 +23,14 @@ const routes: Routes = [
     data:{breadcrumb: 'Shop'}
   },
   {
+    path: 'basket', loadChildren: () => import('./basket/basket.module').then(mod => mod.BasketModule), // *** Lazy loading of basket module. ***
+    data:{breadcrumb: 'Basket'}
+  },
+  {
+    path: 'checkout', loadChildren: () => import('./checkout/checkout.module').then(mod => mod.CheckoutModule), // *** Lazy loading of checkout module. ***
+    data:{breadcrumb: 'Checkout'}
+  },
+  {
     path: '**', redirectTo: '', pathMatch: 'full'
   }
 ];
