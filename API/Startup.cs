@@ -10,6 +10,7 @@ using API.Helpers;
 using API.Middleware;
 using API.Extensions;
 using StackExchange.Redis;
+using Infrastructure.Identity;
 
 namespace API
 {
@@ -28,15 +29,20 @@ namespace API
             services.AddAutoMapper(typeof(MappingProfiles));
             services.AddDbContext<StoreContext>(x =>
                 x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<AppIdentityDbContext>(x =>
+            {
+                x.UseSqlite(_config.GetConnectionString("IdentityConnection"));
+            });
             // *** Configuration of Redis in Startup class. ***
             services.AddSingleton<IConnectionMultiplexer>(c =>
             {
                 var configuration = ConfigurationOptions.Parse(_config
-                .GetConnectionString("Redis"),true);
+                .GetConnectionString("Redis"), true);
                 return ConnectionMultiplexer.Connect(configuration);
             });
 
             services.AddApplicationServices(); // *** Defining the services in another class as an extension to avoid the clutter. ***
+            services.AddIdentityServices(_config); // *** Defining the services in another class as an extension to avoid the clutter. ***
             services.AddSwaggerDocumentation();
             services.AddCors(opt => // *** This service is to configure the client app cross origin ***
             {
@@ -68,6 +74,7 @@ namespace API
 
             app.UseCors("CorsPolicy"); // *** This Middleware is to configure the client app cross origin. ***
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseSwaggerDocumentation();
