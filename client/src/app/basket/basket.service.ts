@@ -13,7 +13,7 @@ import { IProduct } from '../shared/models/product';
 export class BasketService {
 
   baseUrl = environment.apiUrl;
-  private basketSource = new BehaviorSubject<IBasket>(null);
+  private basketSource = new BehaviorSubject<IBasket>(null); // *** Learn TOMO ***
   basket$ = this.basketSource.asObservable();
   private basketTotalSource = new BehaviorSubject<IBasketTotals>(null);
   basketTotal$ = this.basketTotalSource.asObservable();
@@ -27,6 +27,7 @@ export class BasketService {
   }
 
   getBasket(id: string) {
+    debugger;
     return this.http.get(this.baseUrl + 'basket?id=' + id)
       .pipe(
         map((basket: IBasket) => {
@@ -37,6 +38,7 @@ export class BasketService {
   }
 
   setBasket(basket: IBasket) {
+    debugger;
     return this.http.post(this.baseUrl + 'basket', basket).subscribe((response: IBasket) => {
       this.basketSource.next(response);
       this.calculateTotals();
@@ -74,6 +76,7 @@ export class BasketService {
   }
 
   removeItemFromBasket(item: IBasketItem) {
+    debugger;
     const basket = this.getCurrentBasketValue();
     if (basket.items.some(x => x.id === item.id)) {
       basket.items = basket.items.filter(i => i.id != item.id);

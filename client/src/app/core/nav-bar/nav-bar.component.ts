@@ -12,7 +12,7 @@ import { IUser } from 'src/app/shared/models/user';
 })
 export class NavBarComponent implements OnInit {
 
-  basket$: Observable<IBasket>; // *** $ is used to show it is an observable type. ***
+  basket$: Observable<IBasket>; // *** $ is used to show it is an observable type. Learn TOMO ***
   currentUser$: Observable<IUser>;
 
   constructor(private basketService: BasketService, private accountService: AccountService) { }

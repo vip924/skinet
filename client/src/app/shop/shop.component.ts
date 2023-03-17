@@ -53,6 +53,7 @@ export class ShopComponent implements OnInit {
   }
 
   getTypes() {
+    debugger;
     this.shopService.getTypes().subscribe(response => {
       this.types = [{ id: 0, name: 'All' }, ...response];
     }, error => {
@@ -73,11 +74,13 @@ export class ShopComponent implements OnInit {
   }
 
   onSortSelected(sort: string) {
+    debugger;
     this.shopParams.sort = sort;
     this.getProducts();
   }
 
   onPageChanged(event: any) {
+    debugger;
     if (this.shopParams.pageNumber != event) {
       this.shopParams.pageNumber = event;
       this.getProducts();
@@ -85,6 +88,7 @@ export class ShopComponent implements OnInit {
   }
 
   onSearch() {
+    debugger;
     this.shopParams.search = this.searchTerm.nativeElement.value;
     this.shopParams.pageNumber = 1;
     this.getProducts();

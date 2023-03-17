@@ -1,10 +1,7 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Infrastructure.Data;
 using Core.Entities;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Core.Interfaces;
 using Core.Specifications;
 using API.Dtos;
@@ -35,8 +32,8 @@ namespace API.Controllers
         {
             _productRepo = productsRepo;
             _productTypeRepo = productTypeRepo;
-            _mapper = mapper;
             _productBrandRepo = productBrandRepo;
+            _mapper = mapper;
 
         }
 

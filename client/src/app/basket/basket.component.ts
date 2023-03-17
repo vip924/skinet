@@ -22,6 +22,7 @@ export class BasketComponent implements OnInit {
   }
 
   incrementItemQuantity(item: IBasketItem) {
+    debugger;
     this.basketService.incrementItemQuantity(item);
   }
 

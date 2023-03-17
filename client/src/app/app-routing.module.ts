@@ -28,7 +28,7 @@ const routes: Routes = [
     data: { breadcrumb: 'Basket' }
   },
   {
-    path: 'checkout', canActivate: [AuthGuard], loadChildren: () => import('./checkout/checkout.module').then(mod => mod.CheckoutModule), // *** Lazy loading of checkout module. AuthGuard used for redirecting to prev page from login.***
+    path: 'checkout', canActivate: [AuthGuard], loadChildren: () => import('./checkout/checkout.module').then(mod => mod.CheckoutModule), // *** Lazy loading of checkout module. AuthGuard used for redirecting to prev page (/checkout) from login.***
     data: { breadcrumb: 'Checkout' }
   },
   {

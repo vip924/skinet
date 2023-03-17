@@ -21,6 +21,7 @@ export class ShopService {
   }
 
   getProducts(shopParams: ShopParams) {
+    debugger;
     let params = new HttpParams();
 
     if (shopParams.brandId !== 0)

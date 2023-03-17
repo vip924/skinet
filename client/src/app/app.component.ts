@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
   }
 
   loadBasket() {
-    const basketId = localStorage.getItem('basket_id'); // *** Used to get the details of the basket while starting thr Ng App. ***
+    const basketId = localStorage.getItem('basket_id'); // *** Used to get the details of the basket while starting the Ng App. ***
     if (basketId) {
       this.basketService.getBasket(basketId).subscribe(() => {
         console.log('Initiated Basket');

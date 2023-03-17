@@ -14,6 +14,7 @@ export class CheckoutComponent implements OnInit {
   constructor(private fb: FormBuilder, private accountService: AccountService) { }
 
   ngOnInit() {
+    debugger;
     this.createCheckoutForm();
     this.getAddressFormValues();
   }

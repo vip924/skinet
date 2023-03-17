@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(private accountService: AccountService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    debugger;
     this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl || '/shop'; // *** Used to get the previous state URL to return from login. ***
     this.createLoginForms();
   }
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    debugger;
     this.accountService.login(this.loginForm.value).subscribe(() => {
       this.router.navigateByUrl(this.returnUrl);
     }, error => {

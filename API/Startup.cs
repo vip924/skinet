@@ -70,7 +70,7 @@ namespace API
 
             app.UseRouting();
 
-            app.UseStaticFiles(); // *** Middleware for adding images and staic files. ***
+            app.UseStaticFiles(); // *** Middleware for adding images and static files. ***
 
             app.UseCors("CorsPolicy"); // *** This Middleware is to configure the client app cross origin. ***
 

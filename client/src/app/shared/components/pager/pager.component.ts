@@ -16,6 +16,7 @@ export class PagerComponent implements OnInit {
   }
 
   onPagerChanged(event: any) {
+    debugger;
     this.pageChanged.emit(event.page);
   }
 

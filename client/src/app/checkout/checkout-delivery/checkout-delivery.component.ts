@@ -16,6 +16,7 @@ export class CheckoutDeliveryComponent implements OnInit {
   constructor(private checkoutService: CheckoutService, private basketService: BasketService) { }
 
   ngOnInit(): void {
+    debugger;
     this.checkoutService.getDeliveryMethods().subscribe((dm: IDeliveryMethod[]) => {
       this.deliveryMethods = dm;
     }, error => {
@@ -24,6 +25,7 @@ export class CheckoutDeliveryComponent implements OnInit {
   }
 
   setShippingPrice(deliveryMethod: IDeliveryMethod) {
+    debugger;
     this.basketService.setShippingPrice(deliveryMethod);
   }
 
